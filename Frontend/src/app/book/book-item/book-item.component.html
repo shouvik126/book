@@ -1,0 +1,44 @@
+<div class="card ml-4 mt-3">
+  <img class="card-img-top" [src]="menuItem.url"/>
+  <div class="card-body">
+    <div class="row">
+      <h4 class="ml-2">{{menuItem.name}}</h4>
+      <h4 class="ml-auto">&#8377;{{menuItem.price}}</h4>
+    </div>
+    <div class="row">
+      <p class="col-9 small">
+        <span class="badge badge-success" *ngIf="menuItem.available&&getUserType()=='admin'">
+          Available
+        </span>
+        <span class="badge badge-danger" *ngIf="!menuItem.available&&getUserType()=='admin'">
+          Unavailable
+        </span>
+        {{menuItem.category}}
+      </p>
+      <p class="text-right col-3 small float-right" *ngIf="menuItem.freeDelivery">
+        <span class=" badge badge-primary">
+          <i class="material-icons text-light">local_shipping</i>Free
+        </span>
+      </p>
+    </div>
+    <div class="text-success status rounded p-1 small" *ngIf="menuItem.id == id">Item added to cart</div>
+    <div class="row">
+      <section class="ml-2" *ngIf="getUserType()=='admin'">
+        <i class="material-icons">access_time</i>Publication:
+        <br>{{menuItem.dateOfPublication | date:'dd/MM/yyyy'}}
+      </section>
+      <button 
+        class="btn col-12 mt-1 text-light ml-auto" style="background-color: orangered;" 
+        (click)="editBook(menuItem.id)" 
+        *ngIf="getUserType()=='admin'">
+        <i class="material-icons text-light">edit</i>Edit
+      </button>
+      <button 
+        class="btn col-12 mt-1 text-light float-right" style="background-color: orangered;" 
+        (click)="addCart(menuItem.id)" 
+        *ngIf="getUserType()!='admin'">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>

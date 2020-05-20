@@ -1,0 +1,56 @@
+<div class="container py-5 px-5">
+  <div class="card col-lg-5 col-md-7 col-sm-9 mx-auto my-5">
+    <div class="card-body">
+      <div class="card-title">
+        <h3>Register Here</h3>
+      </div>
+      <div class="text-danger p-3" *ngIf="error != '' ">User Already Exists</div>
+      <form (submit)="addUser(myForm)" [formGroup]="myForm" method="post">
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <label for="userName">User Name</label>
+            <input type="text" class="form-control" placeholder="User Name" id="userName" formControlName='userName'>
+            <div *ngIf="myForm.get('userName').invalid && myForm.get('userName').touched" class="text-danger small">
+              Enter Username</div>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <label for="firstName">First Name</label>
+            <input type="text" placeholder="First Name" class="form-control" id="firstName" formControlName='firstName'>
+            <div *ngIf="myForm.get('firstName').invalid && myForm.get('firstName').touched" class="text-danger small">
+              Enter First Name</div>
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="lastName">Last Name</label>
+            <input type="text" placeholder="Last Name" class="form-control" id="lastName" formControlName='lastName'>
+            <div *ngIf="myForm.get('lastName').invalid && myForm.get('lastName').touched" class="text-danger small">
+              Enter Lastname</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password" formControlName='password'>
+            <div *ngIf="myForm.get('password').invalid && myForm.get('password').touched" class="text-danger small">
+              Enter Password</div>
+          </div>
+          <div class="form-group col-lg-6">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password"
+              name="confirmPassword" formControlName="confirmPassword">
+            <div class="text-danger pt-0 small" *ngIf="passwordError == true">Passwords do no match</div>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-4 col-md-4 col-sm-4">
+            <button type="submit" class=" form-control btn-success btn text-light"
+              [disabled]="myForm.invalid">SignUp</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

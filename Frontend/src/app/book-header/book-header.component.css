@@ -1,0 +1,13 @@
+.foot {
+	color: whitesmoke;
+    display: flex;
+align-items: center;
+
+}
+.roman {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	
+}

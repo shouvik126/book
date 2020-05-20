@@ -1,0 +1,10 @@
+<div class="navbar jumbotron bgImage">
+  <h3 class="container text-light">Find Book</h3>
+  <div class="container">
+    <button type="button" class="btn btn-primary bg-dark col-lg-1 col-md-1 col-sm-1 col-1 p-1">
+      <i class="material-icons">book</i>
+    </button>
+    <input class="form-control col-lg-11 col-md-11 col-sm-11 col-11" id="search" type="text" [(ngModel)]="searchBook"
+      (keyup)="filterData()" placeholder="Search.." />
+  </div>
+</div>

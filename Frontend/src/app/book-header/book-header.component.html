@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: orangered;"> <a
+    class="navbar navbar-brand text-light"><i class="material-icons">book</i>Cognizant Book Mart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active"><a class="nav-link" routerLink="/book-menu">Books</a>
+      </li>
+      <li class="nav-item" *ngIf="getUserType()=='anonymous'"><a class="nav-link" routerLink="/login">Login</a>
+      </li>
+      <li class="nav-item" *ngIf="getUserType()=='admin'||getUserType()=='customer'">
+        <a class="nav-link" routerLink="/book-menu">
+          <i class="material-icons">person</i>{{getUserName()}}
+        </a>
+
+      </li>
+      <li class="nav-item" *ngIf="getUserType()=='customer'"><a class="nav-link" routerLink="/cart">Cart</a>
+      </li>
+      <li class="nav-item" *ngIf="getUserType()=='admin'||getUserType()=='customer'">
+        <a class="nav-link" (click)="logOut()">Logout</a>
+      </li>
+      <li class="nav-item" *ngIf="getUserType()=='anonymous'"><a class="nav-link" routerLink="/signup">Signup</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<nav class="navbar navbar-expand-lg navbar-dark roman foot" style="background-color: orangered;">
+  Copyright &copy; 2019
+</nav>
